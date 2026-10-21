@@ -16,7 +16,7 @@ Comics follow women's move into the workforce, but years behind and with a very 
 | Are comics keeping up with society? | Broadly yes (r = 0.83), but the female share of new characters fell until 1960 while real participation was already rising. |
 | How far behind are they? | Best fit is a 7 year lag (r = 0.89). The curve is flat, so this is a trend effect, not a measured reaction time. |
 | Do Marvel and DC differ? | Marvel peaks at 7 years, DC at 5. The 2 year gap is inside the noise. |
-| What jobs do female characters get? | Jobs that are 50.1% female in reality, against 42.9% for male characters. True in every decade. |
+| What jobs do female characters get? | Jobs that are 50.1% female in reality, against 42.9% for male characters. True in every decade from the 1940s on. |
 | When did women reach "male" jobs? | Real women passed 20% of historically male jobs in the 1980s. Female characters did in the 2010s. |
 | Where did comics miss the most? | Management. Real women gained 26.5 points, comics gained 10.7. In sales, comics went the other way. |
 | Do women get working lives? | 57.1% of female characters have a job listed vs. 66.7% of male characters. The gap closed in the 2020s only because new male characters lost their jobs. |
@@ -38,7 +38,7 @@ Full answers, hypotheses and caveats for all 16 questions are in the notebook.
 ## Method in brief
 
 - **Scraped** every character page from the Marvel (Earth 616) and DC Fandom wikis through their APIs.
-- **Cleaned** gender (83 raw values reduced to 4) and about 15,000 free text occupations (mapped to census job groups) with regular expressions.
+- **Cleaned** gender (83 raw values reduced to 4) and about 15,000 free text occupations (mapped to census job groups) with ordered keyword rules.
 - **De-duplicated** DC's reboots: 1,953 repeat pages removed, which also removed a fake wave of new characters in the 2010s.
 - **Joined** comics to IPUMS job data on job group and decade, and to FRED on year.
 - **Tested** lagged correlations, then moved to benchmark comparisons because correlation between two rising lines is weak evidence.
@@ -70,7 +70,7 @@ Full answers, hypotheses and caveats for all 16 questions are in the notebook.
 
 1. Install the packages: `pip install -r requirements.txt`
 2. Put the four source CSVs in `data/` (see [data/README.md](data/README.md) for names and sources).
-3. Open the notebook and run all cells. In Google Colab it looks for the team Drive folder first, locally it reads from `data/`.
+3. Open the notebook and run all cells. In Google Colab it looks for the team Drive folder first and then `data/`; locally it reads from `data/` (from the repo root or from `notebooks/`).
 
 The IPUMS file cannot be redistributed under the IPUMS terms, so none of the raw data is stored in this repository.
 
@@ -79,7 +79,7 @@ The IPUMS file cannot be redistributed under the IPUMS terms, so none of the raw
 ## Data
 
 | Source | Gives us | Coverage |
-|---|---|
+|---|---|---|
 | [Marvel Database](https://marvel.fandom.com/wiki/Category:Earth-616/Characters) | Gender, debut year, occupation | scraped 29 Sep 2026, CC BY-SA 3.0 |
 | [DC Database](https://dc.fandom.com/wiki/DC_Comics_Database) | Same fields | scraped 29 Sep 2026, CC BY-SA 3.0 |
 | [IPUMS USA](https://usa.ipums.org/usa/) | Women's share of each job group | census 1940 to 2000, ACS 2001 to 2023 |
