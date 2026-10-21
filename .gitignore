@@ -1,0 +1,13 @@
+# Raw data (IPUMS cannot be redistributed)
+data/*.csv
+
+# Python / Jupyter
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
